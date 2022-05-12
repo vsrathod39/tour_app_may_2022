@@ -17,3 +17,9 @@ database setting:-
 1. create a MongoDB cluster -  db user_name & pw: tourappmay2022, VTzSswnrN4nQvnbk
 2. connection string: mongodb+srv://tourappmay2022:<password>@cluster0.hwkx9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 3. import mongoose and connect with the mongoDB database using mongoose.connect().
+
+Creating signup db and route:
+1. creae user model and export default
+2. import user model, create user controller and export it
+3. import user controller, create signup route with the help of user controller
+4. http://localhost/5000/users/signup is ready now to use
