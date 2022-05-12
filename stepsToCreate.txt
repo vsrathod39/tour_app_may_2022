@@ -1,0 +1,19 @@
+First worked on server:
+Inside server folder:
+server setting: -
+1. npm init -y // initialize package
+2. add "type": "module", in package.json // we will not use require instead of use import-export for package management
+3. npm i bcryptjs // to secure password
+4. npm i cors // helps in accessing API from the front end developed in the backend
+5. npm i express
+6. npm i jsonwebtoken
+7. npm i mongoose
+8. npm i morgan // HTTPS request logger, whenever we make an API request we can see it in the console
+9. npm i nodemon --save-dev // save this as dev dependencies
+10. add script in scripts section of package.json "dev": "nodemon index.js" // entry point for nodemon
+11. npm run dev // to run nodemon
+
+database setting:-
+1. create a MongoDB cluster -  db user_name & pw: tourappmay2022, VTzSswnrN4nQvnbk
+2. connection string: mongodb+srv://tourappmay2022:<password>@cluster0.hwkx9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+3. import mongoose and connect with the mongoDB database using mongoose.connect().
