@@ -23,3 +23,10 @@ Creating signup db and route:
 2. import user model, create user controller and export it
 3. import user controller, create signup route with the help of user controller
 4. http://localhost/5000/users/signup is ready now to use
+
+creating front-end inside client folder:
+1. npx create-react-app client
+2. installing some usable package -> npm i @reduxjs/toolkit react-router-dom mdb-react-ui-kit moment react-file-base64 react-google-login react-redux react toastify @material-ui/core  material-ui-chip-input axios --force  (--force flag to avoide react18 errors)
+3. npm start -> to start ract app
+4. configuring the material design bootstrap (mdb) by following npm installation (link: https://mdbootstrap.com/docs/b5/react/getting-started/installation/)
+5. created three folder inside src -> components, pages, redux
