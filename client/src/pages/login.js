@@ -20,8 +20,13 @@ function Login() {
   const [formValue, setFormValue] = useState(initialState);
   const { email, password } = formValue;
 
-  const handleSubmit = () => {};
-  const onInputChange = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  const onInputChange = (e) => {
+    let { name, value } = e.target;
+    setFormValue({ ...formValue, [name]: value });
+  };
 
   return (
     <div
@@ -46,7 +51,6 @@ function Login() {
                 name="email"
                 onChange={onInputChange}
                 required
-                invalid
                 validation="Please provide your email"
               />
             </div>
@@ -58,7 +62,6 @@ function Login() {
                 name="password"
                 onChange={onInputChange}
                 required
-                invalid
                 validation="Please provide your password"
               />
             </div>
