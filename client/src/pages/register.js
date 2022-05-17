@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { login } from "../redux/features/authSlice";
+import { register } from "../redux/features/authSlice";
 
 const initialState = {
   firstName: "",
@@ -36,9 +36,12 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (email && password) {
-    //   dispatch(login({ formValue, navigate, toast }));
-    // }
+    if (password !== confirmPassword) {
+      return toast.error("Password should match");
+    }
+    if (firstName && lastName && email && password && confirmPassword) {
+      dispatch(register({ formValue, navigate, toast }));
+    }
     console.log(formValue);
   };
   const onInputChange = (e) => {
