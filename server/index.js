@@ -14,7 +14,7 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use("/users", userRouter); // user signup route, this will work like http://localhost/5000/users/signup
 
 const mongoDbURL =
-  "mongodb+srv://tourappmay2022:VTzSswnrN4nQvnbk@cluster0.hwkx9.mongodb.net/tourDB?retryWrites=true&w=majority";
+  "mongodb+srv://tourappmay2022:VTzSswnrN4nQvnbk@cluster0.hwkx9.mongodb.net/tourDB?retryWrites=true&w=majority&ssl=true";
 const port = 5000;
 
 app.get("/", (req, res) => {

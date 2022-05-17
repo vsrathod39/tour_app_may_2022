@@ -30,3 +30,4 @@ creating front-end inside client folder:
 3. npm start -> to start ract app
 4. configuring the material design bootstrap (mdb) by following npm installation (link: https://mdbootstrap.com/docs/b5/react/getting-started/installation/)
 5. created three folder inside src -> components, pages, redux
+6. created store, api, features inside redux folder
