@@ -51,6 +51,8 @@ function Login() {
                 name="email"
                 onChange={onInputChange}
                 required
+                // invalid="true"
+                mdbValidate="true"
                 validation="Please provide your email"
               />
             </div>
@@ -62,6 +64,7 @@ function Login() {
                 name="password"
                 onChange={onInputChange}
                 required
+                invalid="true"
                 validation="Please provide your password"
               />
             </div>
