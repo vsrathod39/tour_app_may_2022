@@ -32,3 +32,4 @@ creating front-end inside client folder:
 5. created three folder inside src -> components, pages, redux
 6. created store, api, features inside redux folder
 7. Manual login/signup completed, now integrating google signin
+8. google_oath_client_id=473809259912-jmn1biob719gr7ng1ijno4rc3vka0uk7.apps.googleusercontent.com

@@ -71,7 +71,7 @@ function Login() {
                 onChange={onInputChange}
                 required
                 invalid
-                mdbValidate="true"
+                mdbvalidate={"true"}
                 validation="Please provide your email"
               />
             </div>
@@ -83,7 +83,7 @@ function Login() {
                 name="password"
                 onChange={onInputChange}
                 required
-                invalid="true"
+                invalid={"true"}
                 validation="Please provide your password"
               />
             </div>
@@ -103,20 +103,21 @@ function Login() {
           </MDBValidation>
           <br />
           <GoogleLogin
-            clientId="..."
-            render={(renderProps) => {
+            clientId="473809259912-jmn1biob719gr7ng1ijno4rc3vka0uk7.apps.googleusercontent.com"
+            render={(renderProps) => (
               <MDBBtn
                 style={{ width: "100%" }}
                 color="danger"
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
               >
-                {<MDBIcon className="me-2 " fab icon="google" />} Google Sign-in
-              </MDBBtn>;
-            }}
+                <MDBIcon className="me-2 " fab icon="google" /> Google Sign-in
+              </MDBBtn>
+            )}
+            buttonText="Login"
             onSuccess={googleSuccess}
-            inFailure={googleFailure}
-            cookiePolicy="single_host_origin"
+            onFailure={googleFailure}
+            cookiePolicy={"single_host_origin"}
           />
         </MDBCardBody>
         <MDBCardFooter>
