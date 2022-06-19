@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setUser } from "./redux/features/authSlice";
 import AddEditTour from "./pages/AddEditTour";
+import SingleTour from "./pages/SingleTour";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/addtour" element={<AddEditTour />} />
           <Route path="/edittour/:id" element={<AddEditTour />} />
+          <Route path="/tour/:id" element={<SingleTour />} />
         </Routes>
       </BrowserRouter>
     </div>
