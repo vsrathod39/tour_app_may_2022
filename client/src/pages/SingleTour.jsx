@@ -41,7 +41,7 @@ const SingleTour = () => {
             </span>
             <div style={{ float: "left" }}>
               <span className="text-start">
-                {tour?.tags.map((item) => `#${item}`)}
+                {tour?.tags?.map((item) => `#${item}`)}
               </span>
             </div>
             <br />
