@@ -21,7 +21,10 @@ database setting:-
 Creating signup db and route:
 1. creae user model and export default
 2. import user model, create user controller and export it
-3. import user controller, create signup route with the help of user controller
+3. import user controller, create signup route with the help of user controller and update the index.js for the required route
+6. Creating TourMode and export it
+7. import TourModel and create TourModel controller forn tour creation and one other controller for geting all tours
+8.Next create the endpoints for same and update the index.js for the required route
 4. http://localhost/5000/users/signup is ready now to use
 
 creating front-end inside client folder:
@@ -33,4 +36,6 @@ creating front-end inside client folder:
 6. created store, api, features inside redux folder
 7. Manual login/signup completed, now integrating google signin
 8. Google auth Integration: google_oath_client_id=473809259912-jmn1biob719gr7ng1ijno4rc3vka0uk7.apps.googleusercontent.com
-9. Header
+9. Header/Navbar
+10. Creating a form for adding a new tour
+11. configuring redux for api

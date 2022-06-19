@@ -59,12 +59,12 @@ function Login() {
     if (email && password) {
       dispatch(login({ formValue, navigate, toast }));
     }
-    console.log(formValue);
+    // console.log(formValue);
   };
   const onInputChange = (e) => {
     let { name, value } = e.target;
     setFormValue({ ...formValue, [name]: value });
-    console.log(formValue);
+    // console.log(formValue);
   };
   // const onSuccess = (res) => {
   //   console.log(res);
@@ -102,8 +102,7 @@ function Login() {
                 name="email"
                 onChange={onInputChange}
                 required
-                invalid
-                mdbvalidate={"true"}
+                invalid="true"
                 validation="Please provide your email"
               />
             </div>

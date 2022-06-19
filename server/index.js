@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import morgan from "morgan";
 import userRouter from "./routes/user.js";
+import tourRouter from "./routes/tour.js";
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
 app.use("/users", userRouter); // user signup route, this will work like http://localhost/5000/users/signup
+app.use("/tours", tourRouter); // tour route, this will work like http://localhost/5000/users/signup
 
 const mongoDbURL =
   "mongodb+srv://tourappmay2022:VTzSswnrN4nQvnbk@cluster0.hwkx9.mongodb.net/tourDB?retryWrites=true&w=majority&ssl=true";
