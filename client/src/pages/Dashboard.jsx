@@ -14,8 +14,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { getToursByUser } from "../redux/features/tourSlice";
+import { deleteTour, getToursByUser } from "../redux/features/tourSlice";
 import Spinner from "../components/Spinner";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -30,8 +31,8 @@ const Dashboard = () => {
   }, [userId]);
 
   const excerpt = (str) => {
-    if (str.length > 40) {
-      str = str.substr(0, 40) + "...";
+    if (str?.length > 40) {
+      str = str?.substr(0, 40) + "...";
     }
     return str + "   ";
   };
@@ -39,6 +40,14 @@ const Dashboard = () => {
   if (loading) {
     return <Spinner />;
   }
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure, you want to delete")) {
+      dispatch(deleteTour({ id, toast }));
+    }
+  };
+
+  // console.log(userTours);
 
   return (
     <div
@@ -52,36 +61,36 @@ const Dashboard = () => {
       <h4 className="text-center"> Dashboard: {user?.result?.name}</h4>
       <hr style={{ maxWidth: "570px" }} />
       {userTours &&
-        userTours.map((item) => (
-          <MDBCardGroup key={item._id}>
+        userTours?.map((item) => (
+          <MDBCardGroup key={item?._id}>
             <MDBCard
               style={{ maxWidth: "600px" }}
-              key={item._id}
+              key={item?._id}
               className="mt-2"
             >
               <MDBRow className="g-0">
                 <MDBCol md="4">
                   <MDBCardImage
                     className="rounded"
-                    src={item.imageFile}
-                    alt={item.title}
+                    src={item?.imageFile}
+                    alt={item?.title}
                     fluid
                   />
                 </MDBCol>
                 <MDBCol md="8">
                   <MDBCardBody>
                     <MDBCardTitle className="text-start">
-                      {item.title}
+                      {item?.title}
                     </MDBCardTitle>
                     <MDBCardText className="text-start">
                       <small className="text-muted">
-                        {excerpt(item.discription)}
+                        {excerpt(item?.discription)}
                       </small>
                     </MDBCardText>
                     <div
                       style={{
                         marginLeft: "5px",
-                        float: "rigth",
+                        float: "right",
                         marginTop: "-60px",
                       }}
                     >
@@ -91,9 +100,10 @@ const Dashboard = () => {
                           icon="trash"
                           style={{ color: "#dd4b39" }}
                           size="lg"
+                          onClick={() => handleDelete(item?._id)}
                         ></MDBIcon>
                       </MDBBtn>
-                      <Link to={`/edittour/${item._id}`}>
+                      <Link to={`/edittour/${item?._id}`}>
                         <MDBIcon
                           fas
                           icon="edit"

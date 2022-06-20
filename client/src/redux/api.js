@@ -20,3 +20,6 @@ export const createTour = (tourData) => API.post("/tours", tourData);
 export const getTours = () => API.get("/tours");
 export const getTour = (id) => API.get(`/tours/${id}`);
 export const getToursByUser = (userId) => API.get(`/tours/usertours/${userId}`);
+export const deleteTour = (id) => API.delete(`/tours/${id}`);
+export const updateTour = (updatedTourData, id) =>
+  API.patch(`/tours/${id}`, updatedTourData);

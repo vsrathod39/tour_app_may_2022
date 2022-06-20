@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 
 const TourCard = ({ imageFile, discription, title, tags, _id, name }) => {
   const excerpt = (str) => {
-    if (str.length > 45) {
-      str = str.substr(0, 45) + "...";
+    if (str?.length > 45) {
+      str = str?.substr(0, 45) + "...";
     }
     return str + "   ";
   };
@@ -28,7 +28,7 @@ const TourCard = ({ imageFile, discription, title, tags, _id, name }) => {
         />
         <div className="top-left">{name}</div>
         <span className="text-start tag-card">
-          {tags.map((item) => `#${item}`)}
+          {tags && tags?.map((item) => `#${item}`)}
         </span>
         <MDBCardBody>
           <MDBCardTitle className="text-start">{title}</MDBCardTitle>
