@@ -97,7 +97,6 @@ export const getToursBySearch = async (req, res) => {
 
 export const getToursByTag = async (req, res) => {
   const { tag } = req.params;
-  console.log(searchQuery);
   try {
     const tours = await TourModel.find({ tags: { $in: tag } });
     return res.status(200).json(tours);

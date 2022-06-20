@@ -28,7 +28,12 @@ const TourCard = ({ imageFile, discription, title, tags, _id, name }) => {
         />
         <div className="top-left">{name}</div>
         <span className="text-start tag-card">
-          {tags && tags?.map((item) => `#${item}`)}
+          {tags &&
+            tags?.map((tag, index) => (
+              <Link key={index} to={`/tours/tag/${tag}`}>
+                #{tag}
+              </Link>
+            ))}
         </span>
         <MDBCardBody>
           <MDBCardTitle className="text-start">{title}</MDBCardTitle>

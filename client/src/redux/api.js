@@ -26,3 +26,4 @@ export const updateTour = (updatedTourData, id) =>
 
 export const getToursBySearch = (searchQuery) =>
   API.get(`/tours/search?searchQuery=${searchQuery}`);
+export const getTagTours = (tag) => API.get(`/tours/tag/${tag}`);
