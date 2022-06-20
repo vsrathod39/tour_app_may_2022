@@ -16,7 +16,7 @@ function Home() {
   if (loading) {
     return <Spinner />;
   }
-  // console.log(tours);
+
   return (
     <div
       style={{

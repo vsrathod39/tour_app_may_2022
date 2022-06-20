@@ -6,14 +6,19 @@ import {
   deleteTour,
   getTour,
   getTours,
+  getToursBySearch,
+  getToursByTag,
   getToursByUser,
   updateTour,
 } from "../controllers/tour.js";
 
-router.post("/", auth, createTour); // add a tour
 router.get("/", getTours); // finding all available tours
+router.get("/search", getToursBySearch); // searching a tour by title
+router.get("/tag/:tag", getToursByTag); // searching a tour by tags
 router.get("/:id", getTour); // finding single available tours
+
 router.get("/usertours/:id", auth, getToursByUser); // dashboard endpoint for geting only user's tour data
+router.post("/", auth, createTour); // add a tour
 router.delete("/:id", auth, deleteTour);
 router.patch("/:id", auth, updateTour);
 

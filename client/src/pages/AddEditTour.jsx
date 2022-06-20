@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import {
   MDBCard,
   MDBCardBody,
-  MDBCardFooter,
   MDBValidation,
   MDBBtn,
-  MDBSpinner,
+  MDBInput,
 } from "mdb-react-ui-kit";
 import ChipInput from "material-ui-chip-input";
 import FileBase from "react-file-base64";
@@ -25,6 +24,7 @@ const initialState = {
 
 const AddEditTour = () => {
   const [tourData, setTourDate] = useState(initialState);
+  const [tagErrMsg, setTagErrMsg] = useState(null);
   const { error, loading, userTours } = useSelector((state) => ({
     ...state.tour,
   }));
@@ -48,6 +48,12 @@ const AddEditTour = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!tags.length) {
+      setTagErrMsg("Please provide some tag");
+    }
+    if (tourData.imageFile === undefined) {
+      setTourDate({ ...tourData, imageFile: 1 });
+    }
     if (title && discription && tags) {
       const updatedTourData = { ...tourData, name: user?.result?.name };
       if (!id) {
@@ -65,6 +71,7 @@ const AddEditTour = () => {
   };
 
   const handleAddTag = (tag) => {
+    setTagErrMsg(null);
     setTourDate({ ...tourData, tags: [...tourData.tags, tag] });
   };
 
@@ -100,7 +107,7 @@ const AddEditTour = () => {
               noValidate
             >
               <div className="col-md-12">
-                <input
+                <MDBInput
                   type="text"
                   placeholder="Enter title"
                   value={title}
@@ -108,13 +115,13 @@ const AddEditTour = () => {
                   onChange={onInputChange}
                   className="form-control"
                   required
-                  invalid={"true"}
+                  invalid="true"
                   validation="Please provide title"
                 />
               </div>
               <div className="col-md-12">
-                <input
-                  style={{ height: "100px" }}
+                <MDBInput
+                  // style={{ height: "100px" }}
                   type="text"
                   placeholder="Enter discription"
                   value={discription}
@@ -122,7 +129,9 @@ const AddEditTour = () => {
                   onChange={onInputChange}
                   className="form-control"
                   required
-                  invalid={"true"}
+                  invalid="true"
+                  textarea="true"
+                  rows={4}
                   validation="Please provide discription"
                 />
               </div>
@@ -136,6 +145,7 @@ const AddEditTour = () => {
                   onAdd={(tag) => handleAddTag(tag)}
                   onDelete={(tag) => handleDeletetag(tag)}
                 />
+                {tagErrMsg && <div className="errMsg">{tagErrMsg}</div>}
               </div>
               <div className="d-flex justify-content-start">
                 <FileBase
@@ -146,6 +156,9 @@ const AddEditTour = () => {
                   }
                 />
               </div>
+              {tourData.imageFile === 1 && (
+                <div className="errMsg">{"Select an image"}</div>
+              )}
               <div className="col-12">
                 <MDBBtn style={{ width: "100%" }}>
                   {id ? "Update" : "Submit"}

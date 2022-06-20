@@ -12,6 +12,7 @@ import AddEditTour from "./pages/AddEditTour";
 import SingleTour from "./pages/SingleTour";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,11 +24,12 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <ToastContainer />
       <BrowserRouter>
+        <Header />
+        <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/tours/search" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
@@ -56,6 +58,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
