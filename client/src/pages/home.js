@@ -6,12 +6,14 @@ import TourCard from "./TourCard";
 import Spinner from "../components/Spinner";
 
 function Home() {
-  const { tours, loading } = useSelector((state) => ({ ...state.tour }));
+  const { tours, loading, numberOfPages, correntPage } = useSelector(
+    (state) => ({ ...state.tour })
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getTours());
-  }, []);
+    dispatch(getTours(correntPage));
+  }, [correntPage]);
 
   if (loading) {
     return <Spinner />;

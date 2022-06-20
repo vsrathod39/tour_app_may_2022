@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../redux/features/authSlice";
 import { searchTours } from "../redux/features/tourSlice";
 import { useNavigate } from "react-router-dom";
+import decode from "jwt-decode";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -22,6 +23,14 @@ const Header = () => {
 
   const { user } = useSelector((state) => ({ ...state.auth }));
   const dispatch = useDispatch();
+  const token = user?.token;
+
+  if (token) {
+    const decodedToken = decode(token);
+    if (decodedToken.exp * 1000 < new Date().getTime()) {
+      dispatch(setLogout());
+    }
+  }
 
   const handleLogout = () => {
     dispatch(setLogout());

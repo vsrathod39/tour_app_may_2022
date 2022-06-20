@@ -17,9 +17,9 @@ export const createTour = createAsyncThunk(
 
 export const getTours = createAsyncThunk(
   "tour/gettours",
-  async (_, { rejectWithValue }) => {
+  async (page, { rejectWithValue }) => {
     try {
-      const response = await api.getTours();
+      const response = await api.getTours(page);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -102,6 +102,18 @@ export const getToursByTag = createAsyncThunk(
   }
 );
 
+export const getRelatedTours = createAsyncThunk(
+  "tour/getRelatedTours",
+  async (tags, { rejectWithValue }) => {
+    try {
+      const response = await api.getRelatedTours(tags);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const tourSlice = createSlice({
   name: "tour",
   initialState: {
@@ -109,9 +121,19 @@ const tourSlice = createSlice({
     tours: [],
     userTours: [],
     tagTours: [],
+    relatedTours: [],
+    correntPage: 1,
+    numberOfPages: null,
     error: "",
     loading: false,
   },
+
+  reducers: {
+    setCorrentPage: (state, action) => {
+      state.correntPage = action.payload;
+    },
+  },
+
   extraReducers: {
     [createTour.pending]: (state, action) => {
       state.loading = true;
@@ -129,7 +151,9 @@ const tourSlice = createSlice({
     },
     [getTours.fulfilled]: (state, action) => {
       state.loading = false;
-      state.tours = action.payload;
+      state.tours = action.payload.data;
+      state.numberOfPages = action.payload.numberOfPages;
+      state.correntPage = action.payload.correntPage;
     },
     [getTours.rejected]: (state, action) => {
       state.loading = false;
@@ -219,7 +243,19 @@ const tourSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+    [getRelatedTours.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getRelatedTours.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.relatedTours = action.payload;
+    },
+    [getRelatedTours.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
   },
 });
 
+export const { setCorrentPage } = tourSlice.actions;
 export default tourSlice.reducer;
