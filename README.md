@@ -17,10 +17,12 @@ It is a non-commercial, non-profitable project with the purpose to provide infor
 
 **Database:** MongoDB
 
+**Others:** NPM packages
+
 ## Deployment
 
-- Heroku: Backend (server)
-- Vercel: Frontend (client)
+- Heroku: Backend (server) [Click here](https://tourinfo.herokuapp.com/)
+- Vercel: Frontend (client) [Click here](https://tourinfo.vercel.app/)
 
 ## API Reference
 
@@ -37,8 +39,8 @@ It is a non-commercial, non-profitable project with the purpose to provide infor
 - /tours/tag/:tag --> Method: get --> Fetching matched posts with tags
 - /tours/relatedtours --> Method: post --> Fetching related posts for recomendation
 - /tours/:id --> Method: get --> Frtching a specific post
-- 
-### Protected Routes
+
+#### Protected Routes
 - /tours/usertours/:id --> Method: get --> Dashboard endpoint for fetching tours added by registered user only
 - /tours --> Method: post --> Adding a new post by registered user only
 - /tours/:id --> Method: delete --> Deleting a post added by registered user only
@@ -67,6 +69,7 @@ It is a non-commercial, non-profitable project with the purpose to provide infor
 
 #### Home
 
+![Home](https://user-images.githubusercontent.com/91534659/174786746-5a17710d-2881-4b87-bcd1-348e986d3888.png)
 
 #### Details & Recomendation
 
@@ -78,6 +81,7 @@ It is a non-commercial, non-profitable project with the purpose to provide infor
 
 #### Dashboard
 
+![Dashboard](https://user-images.githubusercontent.com/91534659/174786819-ef3a5d18-18d5-4c13-9f91-4571fb49780f.png)
 
 ## Lessons Learned
 
