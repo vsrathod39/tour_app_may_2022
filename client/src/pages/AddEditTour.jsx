@@ -40,10 +40,12 @@ const AddEditTour = () => {
       const singleTour = userTours.find((tour) => tour._id === id);
       setTourDate({ ...singleTour });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   useEffect(() => {
     error && toast.error(error);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
 
   const handleSubmit = (e) => {
@@ -161,7 +163,14 @@ const AddEditTour = () => {
               )}
               <div className="col-12">
                 <MDBBtn style={{ width: "100%" }}>
-                  {id ? "Update" : "Submit"}
+                  {loading
+                    ? id
+                      ? "Updating..."
+                      : "Submiting..."
+                    : id
+                    ? "Update"
+                    : "Submit"}
+                  {/* {id ? "Update" : "Submit"} */}
                 </MDBBtn>
                 <MDBBtn
                   style={{ width: "100%" }}

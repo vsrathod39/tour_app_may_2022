@@ -5,15 +5,24 @@ import { getTours, setCorrentPage } from "../redux/features/tourSlice";
 import TourCard from "./TourCard";
 import Spinner from "../components/Spinner";
 import Pagination from "../components/Pagination";
+import { useLocation } from "react-router-dom";
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 function Home() {
   const { tours, loading, numberOfPages, correntPage } = useSelector(
     (state) => ({ ...state.tour })
   );
   const dispatch = useDispatch();
+  const query = useQuery();
+  const searchQuery = query.get("searchQuery");
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(getTours(correntPage));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [correntPage]);
 
   if (loading) {
@@ -30,9 +39,14 @@ function Home() {
       }}
     >
       <MDBRow className="mt-5">
-        {tours.length === 0 && (
+        {tours.length === 0 && location.pathname === "/" && (
           <MDBTypography className="text-center mb-0" tag="h2">
-            No Tours Found
+            No tour found
+          </MDBTypography>
+        )}
+        {tours.length === 0 && location.pathname !== "/" && (
+          <MDBTypography className="text-center mb-0" tag="h2">
+            No matches found for #{searchQuery}
           </MDBTypography>
         )}
         <MDBCol>
@@ -44,12 +58,14 @@ function Home() {
           </MDBContainer>
         </MDBCol>
       </MDBRow>
-      <Pagination
-        setCorrentPage={setCorrentPage}
-        numberOfPages={numberOfPages}
-        correntPage={correntPage}
-        dispatch={dispatch}
-      />
+      {tours.length > 0 && (
+        <Pagination
+          setCorrentPage={setCorrentPage}
+          numberOfPages={numberOfPages}
+          correntPage={correntPage}
+          dispatch={dispatch}
+        />
+      )}
     </div>
   );
 }

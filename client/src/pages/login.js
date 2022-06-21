@@ -13,7 +13,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { googlesignin, login } from "../redux/features/authSlice";
+// import { googlesignin, login } from "../redux/features/authSlice";
+import { login } from "../redux/features/authSlice"; // repeated
 // import { GoogleLogin } from "react-google-login";
 // import { useGoogleLogin } from "@react-oauth/google";
 // import { gapi } from "gapi-script";
@@ -29,8 +30,8 @@ function Login() {
   const { loading, error } = useSelector((state) => ({ ...state.auth }));
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const clientId =
-    "473809259912-jmn1biob719gr7ng1ijno4rc3vka0uk7.apps.googleusercontent.com";
+  // const clientId =
+  //   "473809259912-jmn1biob719gr7ng1ijno4rc3vka0uk7.apps.googleusercontent.com";
 
   useEffect(() => {
     error && toast.error(error);

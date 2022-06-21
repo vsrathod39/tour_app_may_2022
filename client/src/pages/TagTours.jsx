@@ -28,6 +28,7 @@ const TagTours = () => {
     if (tag) {
       dispatch(getToursByTag(tag));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tag]);
 
   if (loading) {
@@ -65,7 +66,6 @@ const TagTours = () => {
                     </MDBCardTitle>
                     <MDBCardText className="text-start">
                       {excerpt(item.discription, 40)}
-                      {/* <div style={{ float: "left", marginTop: "-5px" }}> */}
                       <MDBBtn
                         size="sm"
                         rounded
@@ -74,7 +74,6 @@ const TagTours = () => {
                       >
                         read more
                       </MDBBtn>
-                      {/* </div> */}
                     </MDBCardText>
                   </MDBCardBody>
                 </MDBCol>
