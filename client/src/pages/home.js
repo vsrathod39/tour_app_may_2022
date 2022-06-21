@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBTypography } from "mdb-react-ui-kit";
 import { useDispatch, useSelector } from "react-redux";
-import { getTours } from "../redux/features/tourSlice";
+import { getTours, setCorrentPage } from "../redux/features/tourSlice";
 import TourCard from "./TourCard";
 import Spinner from "../components/Spinner";
+import Pagination from "../components/Pagination";
 
 function Home() {
   const { tours, loading, numberOfPages, correntPage } = useSelector(
@@ -43,6 +44,12 @@ function Home() {
           </MDBContainer>
         </MDBCol>
       </MDBRow>
+      <Pagination
+        setCorrentPage={setCorrentPage}
+        numberOfPages={numberOfPages}
+        correntPage={correntPage}
+        dispatch={dispatch}
+      />
     </div>
   );
 }

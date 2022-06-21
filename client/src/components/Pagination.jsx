@@ -29,20 +29,46 @@ const Pagination = ({
         </MDBPagination>
       );
     } else {
-      if (correntPage !== 1) {
+      if (correntPage !== 1 && correntPage !== numberOfPages) {
         return (
           <MDBPagination center className="mb-0">
             <MDBPaginationItem>
               <MDBBtn
                 rounded
                 className="mx-2"
-                onClick={() => dispatch(setCorrentPage(correntPage + 1))}
+                onClick={() => dispatch(setCorrentPage(correntPage - 1))}
               >
                 Prev
               </MDBBtn>
             </MDBPaginationItem>
             <MDBPaginationItem>
-              <p className="fw-bold mt-1">1</p>
+              <p className="fw-bold mt-1">{correntPage}</p>
+            </MDBPaginationItem>
+            <MDBPaginationItem>
+              <MDBBtn
+                rounded
+                className="mx-2"
+                onClick={() => dispatch(setCorrentPage(correntPage + 1))}
+              >
+                Next
+              </MDBBtn>
+            </MDBPaginationItem>
+          </MDBPagination>
+        );
+      } else {
+        return (
+          <MDBPagination center className="mb-0">
+            <MDBPaginationItem>
+              <MDBBtn
+                rounded
+                className="mx-2"
+                onClick={() => dispatch(setCorrentPage(correntPage - 1))}
+              >
+                Prev
+              </MDBBtn>
+            </MDBPaginationItem>
+            <MDBPaginationItem>
+              <p className="fw-bold mt-1">{correntPage}</p>
             </MDBPaginationItem>
           </MDBPagination>
         );
@@ -50,7 +76,7 @@ const Pagination = ({
     }
   };
 
-  return <div></div>;
+  return <div className="mt-4">{renderPagination()}</div>;
 };
 
 export default Pagination;

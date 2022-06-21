@@ -16,12 +16,12 @@ const RelatedTour = ({ RelatedTour, tourId }) => {
     <>
       {RelatedTour && RelatedTour.length > 0 && (
         <>
-          <MDBRow className="g-4">
-            {RelatedTour.length > 1 && <h4>Related Tours</h4>}
+          {RelatedTour.length > 1 && <h4>Related Tours</h4>}
+          <MDBRow className="g-4 row-cols-1 row-cols-md-3">
             {RelatedTour.filter((item) => item._id !== tourId)
               .splice(0, 3)
               .map((item) => (
-                <MDBCol className="row-cols-3 row-cols-md-3" key={item._id}>
+                <MDBCol className="" key={item._id}>
                   <MDBCard>
                     <Link to={`/tour/${item._id}`}>
                       <MDBCardImage

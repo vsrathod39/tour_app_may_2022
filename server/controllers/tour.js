@@ -26,7 +26,7 @@ export const getTours = async (req, res) => {
     const limit = 6;
     const startIndex = (Number(page) - 1) * limit;
     const total = await TourModel.countDocuments({});
-    const tours = await TourModel.find().limit(limit);
+    const tours = await TourModel.find().limit(limit).skip(startIndex);
     return res.status(200).json({
       data: tours,
       correntPage: Number(page),
@@ -123,5 +123,30 @@ export const getRelatedTours = async (req, res) => {
     return res.status(200).json(tours);
   } catch (error) {
     return res.status(404).json({ message: "Someting went wrong" });
+  }
+};
+
+export const likeTour = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!req.userId) {
+      return res.status(201).json({ message: "User is not authenticated" });
+    }
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(201).json({ message: `No tour exist with id: ${id}` });
+    }
+    const tour = await TourModel.findById(id);
+    const index = tour.likes.findIndex((id) => id === String(req.userId));
+    if (index === -1) {
+      tour.likes.push(req.userId);
+    } else {
+      tour.likes = tour.likes.filter((id) => id !== String(req.userId));
+    }
+    const updatedTour = await TourModel.findByIdAndUpdate(id, tour, {
+      new: true,
+    });
+    return res.status(200).json(updatedTour);
+  } catch (error) {
+    return res.status(404).json({ message: error.message });
   }
 };

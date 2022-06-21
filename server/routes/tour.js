@@ -10,6 +10,7 @@ import {
   getToursBySearch,
   getToursByTag,
   getToursByUser,
+  likeTour,
   updateTour,
 } from "../controllers/tour.js";
 
@@ -23,5 +24,6 @@ router.get("/usertours/:id", auth, getToursByUser); // dashboard endpoint for ge
 router.post("/", auth, createTour); // add a tour
 router.delete("/:id", auth, deleteTour);
 router.patch("/:id", auth, updateTour);
+router.patch("/like/:id", auth, likeTour);
 
 export default router;
