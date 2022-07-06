@@ -107,6 +107,8 @@ I found managing states in react is really difficult. I filled tricky in configu
 
 It is a non-commercial, non-profitable project with the purpose to provide information about visiting placess. Made for the hand of experience on web-app development-related technology.
 
+**Note: The work is still in progress.**
+
 #### Is this a clone of another app or the design is copied?
 
 No, It is not a clone. However, I had taken the help of various online resources, specialy from CodeWithVishal youtube channel while making this web app.
